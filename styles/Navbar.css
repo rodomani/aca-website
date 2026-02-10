@@ -1,0 +1,73 @@
+/* Navbar.css */
+
+.navbar {
+    background-color: #f7f1e8;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between; /* This spaces out the brand and the menu */
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't break layout */
+  }
+  
+  .navbarBrand .brandLink {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #080404;
+  }
+  
+  /* This is the part that fixes your list */
+  .navbarNav {
+    display: flex; /* 1. Makes the list horizontal */
+    list-style: none; /* 2. Removes the bullet points */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navItem {
+    margin-left: 2rem; /* 3. Adds spacing between items */
+  }
+  
+  .navLink {
+    text-decoration: none; /* 4. Removes the link underline */
+    color: #555;
+    font-size: 1rem;
+    transition: color 0.2s;
+  }
+  
+  .navLink:hover {
+    color: #000;
+  }
+  
+  /* Hides the mobile hamburger menu button on desktop */
+  .navbarToggle {
+    display: none;
+  }
+  
+  /* --- Optional: Mobile Styling --- */
+  /* This makes it responsive for smaller screens */
+  @media (max-width: 768px) {
+    .navbarMenu {
+      display: none; /* Hide the menu on mobile */
+    }
+  
+    .navbarToggle {
+      display: block; /* Show the hamburger button */
+    }
+  
+    .toggleButton {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  
+    .hamburgerLine {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: #333;
+    }
+  }
