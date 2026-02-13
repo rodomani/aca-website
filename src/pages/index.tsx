@@ -15,7 +15,7 @@ const classes = {
   outlineButton:
     "rounded-full border border-[rgba(var(--color-primary-rgb)/30)] bg-[transparent] px-5 py-3 text-[0.75rem] uppercase tracking-[0.14em] transition duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-primary)]/10",
   mainSection:
-    "relative grid items-center gap-16 px-8 pb-[140px] pt-[120px] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.6fr)] lg:px-16",
+    "relative grid items-center gap-16 px-8 pb-[140px] pt-[170px] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.6fr)] lg:px-16",
   mainGlow:
     "aca-pulse absolute -right-[120px] -top-[120px] h-[420px] w-[420px] bg-[radial-gradient(circle,rgba(var(--color-accent-rgb)/0.45),transparent_70%)] blur-[40px]",
   primaryButton:
@@ -125,7 +125,7 @@ const HomePage: React.FC = () => {
               우리는 문화 교류를 통해 더 넓은 세상을 만듭니다. 아주문화협회와
               함께 아시아의 깊이를 경험하세요.
             </p>
-            <div className="mb-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            {/* <div className="mb-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <button className={classes.primaryButton} type="button">
                 Book a Ceremony
               </button>
@@ -142,9 +142,9 @@ const HomePage: React.FC = () => {
                 <span className={classes.statLabel}>위치</span>
                 <span className="text-[0.95rem]">South Korea</span>
               </div>
-            </div>
+            </div> */}
           </div>
-          <div className={classes.featureCard}>
+          {/* <div className={classes.featureCard}>
             <div
               className="pointer-events-none absolute inset-0"
               aria-hidden="true"
@@ -168,7 +168,7 @@ const HomePage: React.FC = () => {
                 <span>02/17</span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div
             className={`${classes.leaf} bottom-10 left-[30px]`}
             aria-hidden="true"
@@ -362,7 +362,7 @@ const HomePage: React.FC = () => {
               문의
             </button>
           </div>
-        </section>
+        </section>  
       </main>
 
       <footer className={classes.footer}>
@@ -376,9 +376,12 @@ const HomePage: React.FC = () => {
           <p className="text-xs mt-9 text-[var(--color-primary)]/80">
             © 2026 Asian Cultural Association. All Rights Reserved.
           </p>
+          <p className="text-xs mt-3 text-[var(--color-primary)]/80">
+            Designed & Built by Tae Hyung Kim
+          </p>    
         </div>
         <div className="flex flex-col gap-3 text-[0.9rem]">
-          <a href="#story">협회소개</a>
+          <a href="#story">협회소개</a> 
           <a href="#rituals">교육안내</a>
           <a href="#collection">활동소식</a>
           <a href="#events">이벤트</a>
