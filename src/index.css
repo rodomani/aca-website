@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    /* Sets the default background to the Warm Cream color */
+    @apply bg-[#F4F1E9] text-[#2C2C2C];
+  }
+}
