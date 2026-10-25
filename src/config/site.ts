@@ -5,7 +5,7 @@ export const siteConfig = {
     "Preserving, researching, and sharing the heritage of Asian culture through archives, education, and community programs.",
   url: "https://www.aca-example.org",
   orgInfo: {
-    email: "contact@aca-example.org",
+    email: "asian05@naver.com",
   },
   mainNav: [
     { key: "notices", href: "/notices" },

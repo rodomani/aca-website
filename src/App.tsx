@@ -1,23 +1,45 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 
-// Import all of the pages we just created
-import { Home } from './pages/Home';
-import { Notices } from './pages/Notices';
-import { Research } from './pages/Research';
-import { Archive } from './pages/Archive';
-import { Store } from './pages/Store';
+import { ScrollToTop } from "./components/layout/ScrollToTop";
+
+import { Archive } from "./pages/archive/Archive";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { NoticeDetail } from "./pages/notices/NoticeDetail";
+import { Notices } from "./pages/notices/Notices";
+import { Register } from "./pages/Register";
+import { Research } from "./pages/research/Research";
+import { Store } from "./pages/store/Store";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Routes>
-        {/* Map the URLs to the specific Page components */}
+        {/* Main pages */}
         <Route path="/" element={<Home />} />
-        <Route path="/notices" element={<Notices />} />
         <Route path="/research" element={<Research />} />
         <Route path="/archive" element={<Archive />} />
         <Route path="/store" element={<Store />} />
+
+        {/* Notices */}
+        <Route path="/notices" element={<Notices />} />
+        <Route
+          path="/notices/:noticeId"
+          element={<NoticeDetail />}
+        />
+
+        {/* Authentication */}
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          element={<Register />}
+        />
       </Routes>
     </BrowserRouter>
   );

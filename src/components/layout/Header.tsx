@@ -1,10 +1,34 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { siteConfig } from "../../config/site";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { supabase } from "../../utils/supabase";
 
 export function Header() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  useEffect(() => {
+    void supabase.auth.getSession().then(({ data: { session } }) => {
+      setIsAuthenticated(Boolean(session));
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => setIsAuthenticated(Boolean(session)),
+    );
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    await supabase.auth.signOut();
+    setIsLoggingOut(false);
+    navigate("/");
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#E2DEC6] bg-[#F4F1E9]">
@@ -36,6 +60,23 @@ export function Header() {
           </nav>
 
           <LanguageSwitcher />
+          {isAuthenticated ? (
+            <button
+              type="button"
+              onClick={handleLogout}
+              disabled={isLoggingOut}
+              className="font-sans text-sm font-semibold text-[#1A3C2F] underline underline-offset-4 disabled:cursor-wait disabled:opacity-60"
+            >
+              {isLoggingOut ? t("header.loggingOut") : t("header.logout")}
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="font-sans text-sm font-semibold text-[#1A3C2F] underline underline-offset-4"
+            >
+              {t("header.login")}
+            </Link>
+          )}
 
           <button
             type="button"
