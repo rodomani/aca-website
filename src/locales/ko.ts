@@ -1,4 +1,47 @@
 const ko = {
+  posts: {
+    "tooMuchContent": "본문은 100,000자 이하, 글과 사진은 총 200개 블록 이하로 작성해 주세요.",
+    "inlineHelp": "문단 아래에 사진을 추가하고 그 아래에서 글을 이어 쓰세요. 위로 / 아래로 버튼으로 글과 사진의 순서를 바꿀 수 있습니다.",
+    "photoNumber": "사진 {{number}}",
+    "paragraphNumber": "문단 {{number}}",
+    "insertPhoto": "{{position}}번 블록 뒤에 사진 추가",
+    "addParagraph": "+ 문단 추가",
+    "write": "게시물 쓰기",
+    "loading": "게시물을 불러오는 중…",
+    "loadError": "게시물을 불러오지 못했습니다. 다시 시도해 주세요.",
+    "retry": "다시 시도",
+    "empty": "아직 등록된 게시물이 없습니다.",
+    "back": "목록으로",
+    "notFound": "게시물이 없거나 공개되지 않았습니다.",
+    "checking": "접근 권한을 확인하는 중…",
+    "adminOnly": "관리자 권한이 필요합니다",
+    "denied": "관리자만 게시물을 작성하고 등록할 수 있습니다.",
+    "profileError": "프로필을 확인하지 못했습니다. 새로고침하거나 프로필 조회 권한을 확인해 주세요.",
+    "editorDescription": "아래 항목을 작성해 주세요. 입력한 글은 한국어 원문으로 저장되며, 번역이 추가되기 전에는 영어 화면에도 원문이 표시됩니다.",
+    "title": "제목",
+    "description": "설명 / 요약",
+    "category": "카테고리",
+    "categoryExample": "예: 전시, 워크숍, 협회 소식",
+    "body": "본문",
+    "pictures": "사진 목록",
+    "pictureHelp": "선택 사항: JPG, PNG, WebP, GIF 사진 최대 10장, 장당 5MB까지 첨부할 수 있습니다. 본문의 첫 사진이 대표 이미지가 됩니다.",
+    "addPictures": "사진 추가",
+    "cover": "대표 이미지",
+    "alt": "사진 설명 (선택)",
+    "up": "위로",
+    "down": "아래로",
+    "remove": "삭제",
+    "cancel": "취소",
+    "publish": "게시물 등록",
+    "publishing": "등록 중…",
+    "uploading": "사진 {{current}} / {{total}} 업로드 중…",
+    "required": "제목, 설명, 카테고리, 본문을 모두 입력해 주세요.",
+    "tooManyImages": "사진은 최대 10장까지 첨부할 수 있습니다.",
+    "invalidImage": "5MB 이하의 JPG, PNG, WebP, GIF 파일을 선택해 주세요. 빈 파일은 업로드할 수 없습니다.",
+    "publishError": "등록 여부를 확인하지 못했습니다. 작성 내용은 유지됩니다. 오류를 확인하고 다시 시도해 주세요.",
+    "retryHint": "중복 등록을 방지하기 위해 전송한 내용은 잠겨 있습니다. 다시 시도하거나 취소 후 새 글을 작성해 주세요.",
+    "discard": "작성 화면을 나가시겠습니까? 저장되지 않은 내용은 사라집니다. 등록 도중 중단되었다면 새 글을 쓰기 전에 목록을 확인해 주세요."
+},
   home: {
     hero: {
       eyebrow: "{{siteName}}에 오신 것을 환영합니다",
@@ -7,7 +50,7 @@ const ko = {
         "아카이브, 교육, 지역사회 프로그램을 통해 아시아 문화유산을 보존하고 연구하며 공유합니다.",
       invitation:
         "아카이브를 둘러보고 교육 프로그램에 참여하여 문화 공동체와 함께해 주세요.",
-      exploreArchive: "문화 아카이브 둘러보기",
+      exploreArchive: "활동 아카이브 둘러보기",
       viewPrograms: "프로그램 보기",
     },
     quickLinks: {
@@ -19,7 +62,7 @@ const ko = {
           description: "아시아 문화 연구 자료와 글",
         },
         archive: {
-          title: "문화 아카이브",
+          title: "활동 아카이브",
           description: "역사 포스터와 문화 기록",
         },
         store: {
@@ -38,7 +81,7 @@ const ko = {
   navigation: {
     notices: "공지사항",
     research: "아시아 문화 연구",
-    archive: "문화 아카이브",
+    archive: "활동 아카이브",
     store: "프로그램 및 스토어",
   },
   header: {
@@ -202,7 +245,7 @@ const ko = {
   },
   archive: {
     eyebrow: "아카이브 갤러리",
-    title: "문화 아카이브",
+    title: "활동 아카이브",
     description:
       "협회가 주최한 전시, 심포지엄, 문화 행사의 포스터와 시각 기록을 둘러보세요.",
     items: {

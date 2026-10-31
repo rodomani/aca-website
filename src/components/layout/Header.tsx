@@ -3,11 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { siteConfig } from "../../config/site";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useAdmin } from "../../hooks/useAdmin";
 import { supabase } from "../../utils/supabase";
 
 export function Header() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { isAdmin } = useAdmin();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
@@ -16,8 +19,10 @@ export function Header() {
       setIsAuthenticated(Boolean(session));
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => setIsAuthenticated(Boolean(session)),
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) =>
+      setIsAuthenticated(Boolean(session)),
     );
 
     return () => subscription.unsubscribe();
@@ -47,7 +52,10 @@ export function Header() {
         </Link>
 
         <div className="flex items-center gap-4 md:gap-8">
-          <nav className="hidden items-center gap-8 md:flex" aria-label={t("header.primaryNavigation")}>
+          <nav
+            className="hidden items-center gap-8 md:flex"
+            aria-label={t("header.primaryNavigation")}
+          >
             {siteConfig.mainNav.map((item) => (
               <Link
                 key={item.href}
@@ -57,6 +65,15 @@ export function Header() {
                 {t(`navigation.${item.key}`)}
               </Link>
             ))}
+            {isAdmin && (
+              <Link
+                to="/appendices"
+                lang="ko"
+                className="whitespace-nowrap font-sans text-sm tracking-widest text-[#2C2C2C] hover:text-[#1A3C2F]"
+              >
+                별지
+              </Link>
+            )}
           </nav>
 
           <LanguageSwitcher />
@@ -82,6 +99,9 @@ export function Header() {
             type="button"
             className="flex flex-col gap-[6px] p-2 md:hidden"
             aria-label={t("header.openMenu")}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsMenuOpen((open) => !open)}
           >
             <span className="block h-px w-6 bg-[#1A3C2F]" />
             <span className="block h-px w-6 bg-[#1A3C2F]" />
@@ -89,6 +109,34 @@ export function Header() {
           </button>
         </div>
       </div>
+      {isMenuOpen && (
+        <nav
+          id="mobile-navigation"
+          aria-label={t("header.primaryNavigation")}
+          className="flex flex-col gap-1 border-t border-[#E2DEC6] px-4 py-3 md:hidden"
+        >
+          {siteConfig.mainNav.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="px-3 py-3 text-sm text-[#1A3C2F]"
+            >
+              {t(`navigation.${item.key}`)}
+            </Link>
+          ))}
+          {isAdmin && (
+            <Link
+              to="/appendices"
+              lang="ko"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-3 py-3 text-sm text-[#1A3C2F]"
+            >
+              별지
+            </Link>
+          )}
+        </nav>
+      )}
     </header>
   );
 }
